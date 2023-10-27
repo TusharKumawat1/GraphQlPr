@@ -30,7 +30,7 @@ export default function page() {
    }, [])
   return (
     <div className=' flex w-screen h-screen justify-center items-center'>
-    <h1 className=' text-[50px] font-bold'>Check out the console baby</h1>
+    <h1 className=' text-[50px] font-bold'>Check out the console baby 🤖</h1>
     </div>
   )
 }

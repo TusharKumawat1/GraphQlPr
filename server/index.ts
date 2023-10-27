@@ -8,17 +8,30 @@ async function connection(){
     app.use(express.json());
     const server=new ApolloServer({
         typeDefs: `
-        type Test{  
-            id:ID!
-            title : String
-        }
+        type Test {
+            id: ID!
+            title: String
+            todos: [Todo]
+          }
+          
+          type Todo {
+            id: ID!
+            todo: String
+            completed: Boolean
+            userId: ID
+          }
         type Query {
-            callTest:[Test]
+            callTest:Test
+           
         }
         `,
         resolvers:{
             Query :{
-                callTest: ()=>[{id:999,title:"hello graphQl"}]
+                callTest: async()=>{
+                    const data=await fetch('https://dummyjson.com/todos/')
+                    const res=await data.json()
+                 return res
+                }
             }
         },
     });

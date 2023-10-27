@@ -20,15 +20,28 @@ async function connection(){
             completed: Boolean
             userId: ID
           }
+          type Quotes{
+            quotes:[quote]
+          }
+          type quote{
+            id:ID
+            quote:String
+            author:String
+          }
         type Query {
             callTest:Test
-           
+            getQuotes: Quotes
         }
         `,
         resolvers:{
             Query :{
                 callTest: async()=>{
-                    const data=await fetch('https://dummyjson.com/todos/')
+                    const data=await fetch('https://dummyjson.com/todos')
+                    const res=await data.json()
+                 return res
+                },
+                getQuotes:async()=>{
+                    const data=await fetch('https://dummyjson.com/quotes/')
                     const res=await data.json()
                  return res
                 }

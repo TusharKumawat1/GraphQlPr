@@ -31,6 +31,7 @@ async function connection(){
         type Query {
             callTest:Test
             getQuotes: Quotes
+            getRandomQuote: quote
         }
         `,
         resolvers:{
@@ -42,6 +43,11 @@ async function connection(){
                 },
                 getQuotes:async()=>{
                     const data=await fetch('https://dummyjson.com/quotes/')
+                    const res=await data.json()
+                 return res
+                },
+                getRandomQuote:async()=>{
+                    const data=await fetch('https://dummyjson.com/quotes/random')
                     const res=await data.json()
                  return res
                 }

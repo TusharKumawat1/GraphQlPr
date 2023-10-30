@@ -36,7 +36,7 @@ export default function page() {
             options={{
               strings: [`${response.quote} - ${response.author}`],
               autoStart: true,
-              loop: false,
+              loop: true,
               deleteSpeed: 2,
               delay: 40,
             }}
